@@ -1,0 +1,21 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "antfu",
+    "commitlint",
+    "consola",
+    "formkit",
+    "kysely",
+    "notivue",
+    "nuxt",
+    "sidebase",
+    "trpc",
+    "unocss",
+    "vueuse"
+  ],
+  "ignoreWords": [],
+  "import": []
+}
