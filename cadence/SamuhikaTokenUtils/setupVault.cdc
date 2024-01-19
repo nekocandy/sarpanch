@@ -1,5 +1,5 @@
-import FungibleToken from "../utils/FungibleToken.cdc"
-import SamuhikaToken from "../SamuhikaToken.cdc"
+import FungibleToken from 0xNC
+import SamuhikaToken from 0xNC
 
 transaction() {
     prepare(signer: AuthAccount) {
