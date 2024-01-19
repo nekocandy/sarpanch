@@ -3,6 +3,7 @@ import { env } from 'std-env'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  ssr: false,
   app: {
     head: {
       title: 'opinionated nuxt',
