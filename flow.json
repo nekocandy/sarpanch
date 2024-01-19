@@ -1,14 +1,26 @@
 {
-	"networks": {
-		"emulator": "127.0.0.1:3569",
-		"mainnet": "access.mainnet.nodes.onflow.org:9000",
-		"testing": "127.0.0.1:3569",
-		"testnet": "access.devnet.nodes.onflow.org:9000"
-	},
-	"accounts": {
-		"emulator-account": {
-			"address": "f8d6e0586b0a20c7",
-			"key": "2240b31af9db9a9bf2848785eb05105193bad1adf190d09ea169a73902246075"
-		}
-	}
+  "contracts": {
+    "FungibleToken": "./cadence/utils/FungibleToken.cdc",
+    "SamuhikaToken": "./cadence/SamuhikaToken.cdc"
+  },
+  "networks": {
+    "emulator": "127.0.0.1:3569",
+    "mainnet": "access.mainnet.nodes.onflow.org:9000",
+    "testing": "127.0.0.1:3569",
+    "testnet": "access.devnet.nodes.onflow.org:9000"
+  },
+  "accounts": {
+    "emulator-account": {
+      "address": "f8d6e0586b0a20c7",
+      "key": "2240b31af9db9a9bf2848785eb05105193bad1adf190d09ea169a73902246075"
+    }
+  },
+  "deployments": {
+    "emulator": {
+      "emulator-account": [
+        "FungibleToken",
+        "SamuhikaToken"
+      ]
+    }
+  }
 }
