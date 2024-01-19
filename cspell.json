@@ -16,6 +16,7 @@
     "sidebase",
     "trpc",
     "typedefs",
+    "unauthenticate",
     "unocss",
     "vueuse"
   ],
