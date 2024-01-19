@@ -32,6 +32,10 @@ export default defineConfig({
           name: 'JetBrains Mono',
           weights: Array.from({ length: 9 }).fill(0).map((_, i) => i * 100 + 100),
         },
+        hindi: {
+          name: 'IBM Plex Sans Devanagari',
+          weights: Array.from({ length: 9 }).fill(0).map((_, i) => i * 100 + 100),
+        },
       },
     }),
   ],
