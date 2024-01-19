@@ -2,6 +2,7 @@
 import * as fcl from '@onflow/fcl'
 import SetupSamuhikaTokenVault from '~/cadence/SamuhikaTokenUtils/setupVault.cdc?raw'
 import GetSamuhikaTokenBalance from '~/cadence/scripts/getSamuhikaTokenBalance.cdc?raw'
+import MintSamuhikaToken from '~/cadence/SamuhikaTokenUtils/mintSamuhikaTokens.cdc?raw'
 
 const router = useRouter()
 
@@ -41,6 +42,36 @@ async function setupAccount() {
     authorizations: [fcl.authz],
     limit: 999,
   })
+
+  isChecking.value = true
+  await getBalance()
+}
+
+async function mintToken() {
+  if (!userData.value?.addr)
+    return router.push('/')
+
+  const transaction = await fcl.mutate({
+    cadence: MintSamuhikaToken,
+    // @ts-expect-error no typings for fcl
+    args: (arg, t) => [
+      arg(userData.value?.addr, t.Address),
+      arg('1000.00', t.UFix64),
+    ],
+    // @ts-expect-error no typings for fcl
+    proposer: fcl.authz,
+    // @ts-expect-error no typings for fcl
+    payer: fcl.authz,
+    // @ts-expect-error no typings for fcl
+    authorizations: [fcl.authz],
+    limit: 999,
+
+  })
+
+  consola.info('transaction', transaction)
+  await fcl.tx(transaction).onceSealed()
+  isChecking.value = true
+  await getBalance()
 }
 
 onMounted(async () => {
@@ -65,6 +96,34 @@ onMounted(async () => {
       <button px-12 py-4 mt-4 rounded-md border-2 hover:bg-white hover:text-black class="group" @click="setupAccount()">
         Setup your flow wallet for <span text-lime group-hover:text-lime-800>Samuhika Token</span>
       </button>
+    </div>
+
+    <div v-if="!isChecking && balance <= 0" h-full w-full flex flex-col items-center justify-center gap-4>
+      <span>
+        Congratulations! You have <span text-lime>Samuhika Token</span> linked to your FLOW wallet, but you do not have any balance left.
+      </span>
+      <span>
+        Please use the button below to mint some <span text-lime>Samuhika Token</span> for yourself.
+      </span>
+
+      <button flex items-center gap-4 px-12 py-4 mt-4 rounded-md border-2 hover:bg-white hover:text-black class="group" @click="mintToken()">
+        <div i-ph-plant />
+        <span>Mint <span text-lime group-hover:text-lime-800>Samuhika Token</span></span>
+      </button>
+    </div>
+
+    <div v-if="!isChecking && balance > 0" h-full w-full flex flex-col items-center justify-center gap-4>
+      <span>
+        Congratulations! You have <span text-lime>Samuhika Token</span> linked to your FLOW wallet.
+      </span>
+      <span>
+        You currently have a balance of <span text-lime>{{ balance }}</span> <span text-lime>Samuhika Token</span>.
+      </span>
+
+      <NuxtLink to="/home" mt-2 px-12 py-2 border-2 rounded-md flex items-center gap-2 hover:border-4>
+        <span>Continue to Sarpanch</span>
+        <div i-material-symbols-arrow-right-alt />
+      </NuxtLink>
     </div>
   </div>
 </template>
