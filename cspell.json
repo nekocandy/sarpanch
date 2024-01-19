@@ -11,6 +11,8 @@
     "kysely",
     "notivue",
     "nuxt",
+    "onflow",
+    "Sarpanch",
     "sidebase",
     "trpc",
     "unocss",
