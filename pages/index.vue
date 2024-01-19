@@ -9,7 +9,7 @@ async function handleAuth() {
   consola.info('userData', userData.value?.addr)
 
   if (userData.value?.addr)
-    router.push('/dashboard')
+    router.push('/check')
 
   else
     logIn()

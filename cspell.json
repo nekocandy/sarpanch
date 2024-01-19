@@ -5,6 +5,7 @@
   "dictionaries": [],
   "words": [
     "antfu",
+    "Attributify",
     "commitlint",
     "consola",
     "devnet",
@@ -20,7 +21,8 @@
     "typedefs",
     "unauthenticate",
     "unocss",
-    "vueuse"
+    "vueuse",
+    "सरपंच"
   ],
   "ignoreWords": [],
   "import": []
