@@ -1,4 +1,4 @@
-import FungibleToken from "./utils/FungibleToken.cdc" // 0x9a0766d93b6608b7
+import FungibleToken from 0xee82856bf20e2aa6 // 0x9a0766d93b6608b7
 
 pub contract SamuhikaToken: FungibleToken {
     pub var totalSupply: UFix64

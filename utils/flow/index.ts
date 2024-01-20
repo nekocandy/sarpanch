@@ -25,7 +25,7 @@ const fclConfigInfo = {
   },
 }
 
-const { NCT_ADDRESS } = useRuntimeConfig().public
+const { NC_ADDRESS, NCT_ADDRESS, FT_ADDRESS } = useRuntimeConfig().public
 
 config({
   'app.detail.title': 'Sarpanch',
@@ -34,6 +34,7 @@ config({
   'accessNode.api': fclConfigInfo[network].accessNode,
   'discovery.wallet': fclConfigInfo[network].discoveryWallet,
   'discovery.authn.include': fclConfigInfo[network].discoveryAuthInclude,
-  '0xNC': '0xf8d6e0586b0a20c7',
+  '0xNC': NC_ADDRESS,
   '0xNCT': NCT_ADDRESS,
+  '0xFT': FT_ADDRESS,
 }).load({ flowJSON })

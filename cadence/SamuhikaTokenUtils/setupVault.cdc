@@ -1,4 +1,4 @@
-import FungibleToken from 0xNC
+import FungibleToken from 0xFT
 import SamuhikaToken from 0xNC
 
 transaction() {
