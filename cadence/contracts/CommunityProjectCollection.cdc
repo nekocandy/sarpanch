@@ -12,7 +12,6 @@ pub contract CommunityProjectCollection {
             name: String,
             description: String,
             image: String,
-            address: String
         ) {
             self.name = name
             self.description = description
@@ -46,7 +45,7 @@ pub contract CommunityProjectCollection {
 
     pub var projects: [Project]
 
-    pub event ProjectCreated(name: String, address: String)
+    pub event ProjectCreated(name: String)
 
     pub event DonationMade(projectIndex: Int, sender: Address, amount: UFix64, transactionID: UInt64)
 
@@ -54,17 +53,15 @@ pub contract CommunityProjectCollection {
         name: String,
         description: String,
         image: String,
-        address: String
     ) {
         let newProject = Project(
             name: name,
             description: description,
             image: image,
-            address: address
         )
 
         self.projects.append(newProject)
-        emit ProjectCreated(name: name, address: address)
+        emit ProjectCreated(name: name)
     }
 
     pub fun donateToProject(
