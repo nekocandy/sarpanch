@@ -1,6 +1,6 @@
 import SarpanchNFT from 0xNC
-import NonFungibleToken from 0xNC
-import MetadataViews from 0xNC
+import NonFungibleToken from 0xNCT
+import MetadataViews from 0xNCT
 
 transaction() {
   
