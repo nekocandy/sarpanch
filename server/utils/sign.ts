@@ -1,10 +1,13 @@
 /* eslint-disable node/prefer-global/buffer */
 import * as fcl from '@onflow/fcl'
 import { SHA3 } from 'sha3'
-import { ec as EC } from 'elliptic'
+import EC from 'elliptic'
 import flow from '~/flow.json'
 
-const ec = new EC('p256')
+import '~/utils/flow/index'
+
+// eslint-disable-next-line new-cap
+const ec = new EC.ec('p256')
 
 // @ts-expect-error default exists
 const CONTRACT_ADDRESS = flow.accounts.default as { address: string, key: string }

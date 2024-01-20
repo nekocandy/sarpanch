@@ -2,9 +2,9 @@
 import * as fcl from '@onflow/fcl'
 import SetupSamuhikaTokenVault from '~/cadence/SamuhikaTokenUtils/setupVault.cdc?raw'
 import GetSamuhikaTokenBalance from '~/cadence/scripts/getSamuhikaTokenBalance.cdc?raw'
-import MintSamuhikaToken from '~/cadence/SamuhikaTokenUtils/mintSamuhikaTokens.cdc?raw'
 
 const router = useRouter()
+const { $client } = useNuxtApp()
 
 const balance = ref(0)
 const isChecking = ref(true)
@@ -51,22 +51,7 @@ async function mintToken() {
   if (!userData.value?.addr)
     return router.push('/')
 
-  const transaction = await fcl.mutate({
-    cadence: MintSamuhikaToken,
-    // @ts-expect-error no typings for fcl
-    args: (arg, t) => [
-      arg(userData.value?.addr, t.Address),
-      arg('1000.00', t.UFix64),
-    ],
-    // @ts-expect-error no typings for fcl
-    proposer: fcl.authz,
-    // @ts-expect-error no typings for fcl
-    payer: fcl.authz,
-    // @ts-expect-error no typings for fcl
-    authorizations: [fcl.authz],
-    limit: 999,
-
-  })
+  const transaction = await $client.flowRouter.mint.mutate({ address: userData.value.addr })
 
   consola.info('transaction', transaction)
   await fcl.tx(transaction).onceSealed()

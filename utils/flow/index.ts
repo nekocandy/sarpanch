@@ -1,6 +1,6 @@
 import { config } from '@onflow/fcl'
 import { env } from 'std-env'
-import flowJSON from '../../flow.json'
+import flowJSON from '~/flow.json'
 
 export const network: 'mainnet' | 'testnet' | 'emulator' = (env.PUBLIC_FLOW_NETWORK as
   | 'mainnet'
@@ -25,7 +25,7 @@ const fclConfigInfo = {
   },
 }
 
-const { NC_ADDRESS, NCT_ADDRESS, FT_ADDRESS } = useRuntimeConfig().public
+const { NC_ADDRESS, NCT_ADDRESS, FT_ADDRESS, DFT_ADDRESS } = useRuntimeConfig().public
 
 config({
   'app.detail.title': 'Sarpanch',
@@ -38,4 +38,5 @@ config({
   '0xNC': `0x${flowJSON.accounts.default.address}` || NC_ADDRESS,
   '0xNCT': NCT_ADDRESS,
   '0xFT': FT_ADDRESS,
+  '0xDFT': DFT_ADDRESS,
 }).load({ flowJSON })
