@@ -59,6 +59,7 @@ export default defineNuxtConfig({
       NCT_ADDRESS: env.NUXT_PUBLIC_NCT_ADDRESS as string,
       NC_ADDRESS: env.NC_ADDRESS as string,
       FT_ADDRESS: env.FT_ADDRESS as string,
+      DFT_ADDRESS: env.DFT_ADDRESS as string,
     },
   },
 })
