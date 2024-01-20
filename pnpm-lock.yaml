@@ -26,6 +26,9 @@ dependencies:
   '@trpc/server':
     specifier: ^10.45.0
     version: 10.45.0
+  canvas-constructor:
+    specifier: ^7.0.1
+    version: 7.0.1
   consola:
     specifier: ^3.2.3
     version: 3.2.3
@@ -5210,6 +5213,13 @@ packages:
 
   /caniuse-lite@1.0.30001579:
     resolution: {integrity: sha512-u5AUVkixruKHJjw/pj9wISlcMpgFWzSrczLZbrqBSxukQixmg0SJ5sZTpvaFvxU0HoQKd4yoyAogyrAz9pzJnA==}
+
+  /canvas-constructor@7.0.1:
+    resolution: {integrity: sha512-dO1FZDDA+0zMoamAYn9hq14/p63p24FHA/aM+r2JOUqwoi+So0kYQo44DywDy/QXH1h9/+tgMSjgn01FpshMfA==}
+    engines: {node: '>=v14.18.0'}
+    dependencies:
+      tslib: 2.6.2
+    dev: false
 
   /carbites@1.0.6:
     resolution: {integrity: sha512-dS9IQvnrb5VIRvSTNz5Ff+mB9d2MFfi5mojtJi7Rlss79VeF190jr0sZdA7eW0CGHotvHkZaWuM6wgfD9PEFRg==}
