@@ -1,7 +1,7 @@
 import { Canvas } from 'canvas-constructor/browser'
 import JoiningImage from '~/assets/joining.png'
 
-export default function generateJoiningImage(joiningPosition: number) {
+export default function generateJoiningImage(_joiningPosition?: number) {
   const canvasElement = document.createElement('canvas')
   canvasElement.width = 820
   canvasElement.height = 312
@@ -13,6 +13,6 @@ export default function generateJoiningImage(joiningPosition: number) {
     .printImage(imageElement, 0, 0)
     .setColor('#ffffff')
     .setTextFont('bold 48px Inter')
-    .printText(joiningPosition.toString(), 25, 280)
+    .printText('Member', 25, 280)
     .toDataURL()
 }
