@@ -34,7 +34,8 @@ config({
   'accessNode.api': fclConfigInfo[network].accessNode,
   'discovery.wallet': fclConfigInfo[network].discoveryWallet,
   'discovery.authn.include': fclConfigInfo[network].discoveryAuthInclude,
-  '0xNC': NC_ADDRESS,
+  // @ts-expect-error no idea
+  '0xNC': `0x${flowJSON.accounts.default.address}` || NC_ADDRESS,
   '0xNCT': NCT_ADDRESS,
   '0xFT': FT_ADDRESS,
 }).load({ flowJSON })
