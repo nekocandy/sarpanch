@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { logOut } from '~/utils/flow/auth'
+
 const router = useRouter()
 
 onMounted(() => {
@@ -23,7 +25,11 @@ watch(userData, (newData) => {
       Sarpanch
     </NuxtLink>
 
-    <div />
+    <div>
+      <button v-if="userData?.addr" border-2 px-8 py-2 rounded-md @click="logOut">
+        Logout
+      </button>
+    </div>
   </div>
 </template>
 
