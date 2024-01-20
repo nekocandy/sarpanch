@@ -7,8 +7,8 @@ const NAVIGATION = [
     path: '/fund/community',
   },
   {
-    name: 'Education & Training',
-    path: '/education',
+    name: 'Local Businesses',
+    path: '/local-business',
   },
 ].map(index => ({
   ...index,
