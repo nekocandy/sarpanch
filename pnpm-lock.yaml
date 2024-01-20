@@ -26,6 +26,9 @@ dependencies:
   '@trpc/server':
     specifier: ^10.45.0
     version: 10.45.0
+  canvas-confetti:
+    specifier: ^1.9.2
+    version: 1.9.2
   canvas-constructor:
     specifier: ^7.0.1
     version: 7.0.1
@@ -5213,6 +5216,10 @@ packages:
 
   /caniuse-lite@1.0.30001579:
     resolution: {integrity: sha512-u5AUVkixruKHJjw/pj9wISlcMpgFWzSrczLZbrqBSxukQixmg0SJ5sZTpvaFvxU0HoQKd4yoyAogyrAz9pzJnA==}
+
+  /canvas-confetti@1.9.2:
+    resolution: {integrity: sha512-6Xi7aHHzKwxZsem4mCKoqP6YwUG3HamaHHAlz1hTNQPCqXhARFpSXnkC9TWlahHY5CG6hSL5XexNjxK8irVErg==}
+    dev: false
 
   /canvas-constructor@7.0.1:
     resolution: {integrity: sha512-dO1FZDDA+0zMoamAYn9hq14/p63p24FHA/aM+r2JOUqwoi+So0kYQo44DywDy/QXH1h9/+tgMSjgn01FpshMfA==}
