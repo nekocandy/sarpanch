@@ -6,7 +6,6 @@ pub contract CommunityProjectCollection {
         pub let name: String
         pub let description: String
         pub let image: String
-        pub let address: String
         pub var donations: [Donation]
 
         init(
@@ -18,7 +17,6 @@ pub contract CommunityProjectCollection {
             self.name = name
             self.description = description
             self.image = image
-            self.address = address
             self.donations = []
         }
 
