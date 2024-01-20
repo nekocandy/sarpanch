@@ -10,6 +10,10 @@ const NAVIGATION = [
     name: 'Local Businesses',
     path: '/local-business',
   },
+  {
+    name: 'Emergency Fund',
+    path: '/fund/emergency',
+  },
 ].map(index => ({
   ...index,
   color: hex(),

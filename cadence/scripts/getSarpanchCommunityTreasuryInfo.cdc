@@ -3,7 +3,7 @@ import SarpanchCommunityTreasury from 0xNC
 pub fun main(treasuryAddress: Address): Info {
     let treasury = getAccount(treasuryAddress).getCapability(SarpanchCommunityTreasury.TreasuryPublicPath)
                       .borrow<&SarpanchCommunityTreasury.Treasury{SarpanchCommunityTreasury.TreasuryPublic}>()
-                      ?? panic("There does not exist a treasury here.")
+                      ?? panic("no treasury found at the provided address")
 
     return Info(treasury.admins, treasury.getTreasuryBalance(), treasury.pendingProposals, treasury.completedProposals, treasury.deposits, treasury.orderedActions)
 }

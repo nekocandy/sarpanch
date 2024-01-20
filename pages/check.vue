@@ -2,7 +2,6 @@
 import * as fcl from '@onflow/fcl'
 import SetupSamuhikaTokenVault from '~/cadence/SamuhikaTokenUtils/setupVault.cdc?raw'
 import GetSamuhikaTokenBalance from '~/cadence/scripts/getSamuhikaTokenBalance.cdc?raw'
-import MintSamuhikaToken from '~/cadence/SamuhikaTokenUtils/mintSamuhikaTokens.cdc?raw'
 import DepositToTreasury from '~/cadence/transactions/depositTokensToTreasury.cdc?raw'
 import { accounts } from '~/flow.json'
 
