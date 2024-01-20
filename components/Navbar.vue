@@ -21,7 +21,7 @@ watch(userData, (newData) => {
       {{ userData?.addr || 'Not logged in' }}
     </div>
 
-    <NuxtLink href="/dashboard" text-xl uppercase>
+    <NuxtLink href="/home" text-xl uppercase>
       Sarpanch
     </NuxtLink>
 
