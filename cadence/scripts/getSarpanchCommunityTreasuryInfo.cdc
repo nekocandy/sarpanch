@@ -1,4 +1,4 @@
-import SarpanchCommunityTreasury from "../contracts/SarpanchCommunityTreasury.cdc"
+import SarpanchCommunityTreasury from 0xNC
 
 pub fun main(treasuryAddress: Address): Info {
     let treasury = getAccount(treasuryAddress).getCapability(SarpanchCommunityTreasury.TreasuryPublicPath)
