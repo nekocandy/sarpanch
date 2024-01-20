@@ -103,12 +103,15 @@ onMounted(async () => {
         Congratulations! You have <span text-lime>Samuhika Token</span> linked to your FLOW wallet, but you do not have any balance left.
       </span>
       <span>
-        Please use the button below to mint some <span text-lime>Samuhika Token</span> for yourself.
+        You need to <span text-red>Pledge</span> $FLOW tokens to be a part of SarpanchDAO. You will receive <span text-lime>Samuhika Token</span> after pledging which can be used for multiple in DAO activities.
+      </span>
+      <span>
+        Please use the button below Pledge $FLOW and mint some <span text-lime>Samuhika Token</span> for yourself.
       </span>
 
       <button flex items-center gap-4 px-12 py-4 mt-4 rounded-md border-2 hover:bg-white hover:text-black class="group" @click="mintToken()">
         <div i-ph-plant />
-        <span>Mint <span text-lime group-hover:text-lime-800>Samuhika Token</span></span>
+        <span>Pledge 1000 $FLOW & Mint <span text-lime group-hover:text-lime-800>Samuhika Token</span></span>
       </button>
     </div>
 
