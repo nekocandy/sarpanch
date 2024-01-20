@@ -24,6 +24,7 @@
     "md-editor-v3": "^4.11.0",
     "nanoid": "^5.0.4",
     "next-auth": "4.22.5",
+    "nft.storage": "^7.1.1",
     "notivue": "^2.1.1",
     "std-env": "^3.7.0",
     "trpc-nuxt": "^0.10.17",
