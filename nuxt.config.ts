@@ -55,5 +55,8 @@ export default defineNuxtConfig({
       DISCORD_CLIENT_ID: env.DISCORD_CLIENT_ID as string,
       DISCORD_CLIENT_SECRET: env.DISCORD_CLIENT_SECRET as string,
     },
+    public: {
+      NCT_ADDRESS: env.NUXT_PUBLIC_NCT_ADDRESS as string,
+    },
   },
 })
