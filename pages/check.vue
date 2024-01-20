@@ -3,12 +3,15 @@ import * as fcl from '@onflow/fcl'
 import SetupSamuhikaTokenVault from '~/cadence/SamuhikaTokenUtils/setupVault.cdc?raw'
 import GetSamuhikaTokenBalance from '~/cadence/scripts/getSamuhikaTokenBalance.cdc?raw'
 import MintSamuhikaToken from '~/cadence/SamuhikaTokenUtils/mintSamuhikaTokens.cdc?raw'
+import DepositToTreasury from '~/cadence/transactions/depositTokensToTreasury.cdc?raw'
+import { accounts } from '~/flow.json'
 
 const router = useRouter()
 
 const balance = ref(0)
 const isChecking = ref(true)
 // const isAccountReady = ref<boolean | null>(null)
+// const { NC_ADDRESS } = useRuntimeConfig().public
 
 if (!userData.value?.addr)
   router.push('/')
@@ -27,9 +30,37 @@ async function getBalance() {
   isChecking.value = false
 }
 
+async function pledgeTokens() {
+  if (!userData.value?.addr)
+    return router.push('/')
+
+  const transaction = await fcl.mutate({
+    cadence: DepositToTreasury,
+    // @ts-expect-error no typings for fcl
+    args: (arg, t) => [
+      arg(`0x${accounts.default.address}`, t.Address),
+      arg('1000.00', t.UFix64),
+      arg('Pledge to SarpanchDAO', t.String),
+    ],
+    // @ts-expect-error no typings for fcl
+    proposer: fcl.authz,
+    // @ts-expect-error no typings for fcl
+    payer: fcl.authz,
+    // @ts-expect-error no typings for fcl
+    authorizations: [fcl.authz],
+    limit: 999,
+
+  })
+
+  consola.info('transaction', transaction)
+  await fcl.tx(transaction).onceSealed()
+}
+
 async function setupAccount() {
   if (!userData.value?.addr)
     return router.push('/')
+
+  await pledgeTokens()
 
   await fcl.mutate({
     cadence: SetupSamuhikaTokenVault,

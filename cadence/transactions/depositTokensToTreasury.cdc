@@ -1,5 +1,5 @@
 import SarpanchCommunityTreasury from 0xNC
-import FlowToken from 0xFT
+import FlowToken from 0xDFT
 
 transaction(
   treasuryAddress: Address,
