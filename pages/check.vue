@@ -7,7 +7,6 @@ import DepositToTreasury from '~/cadence/transactions/depositTokensToTreasury.cd
 import { TransactionModals } from '~/utils/store'
 
 const router = useRouter()
-const { $client } = useNuxtApp()
 
 const balance = ref(0)
 const isChecking = ref(true)
@@ -95,15 +94,7 @@ async function mintToken() {
 
   await pledgeTokens()
 
-  const transaction = await $client.flowRouter.mint.mutate({ address: userData.value.addr })
-
-  TransactionModals.value.push({
-    title: 'Txn for Minting SamuhikaToken',
-    transactionId: transaction,
-  })
-
-  consola.info('transaction', transaction)
-  await fcl.tx(transaction).onceSealed()
+  navigateTo('/home')
   isChecking.value = true
   await getBalance()
 }
@@ -149,12 +140,9 @@ onMounted(async () => {
       </button>
     </div>
 
-    <div v-if="!isChecking && balance > 0" h-full w-full flex flex-col items-center justify-center gap-4>
+    <div v-if="!isChecking" h-full w-full flex flex-col items-center justify-center gap-4>
       <span>
         Congratulations! You have <span text-lime>Samuhika Token</span> linked to your FLOW wallet.
-      </span>
-      <span>
-        You currently have a balance of <span text-lime>{{ balance }}</span> <span text-lime>Samuhika Token</span>.
       </span>
 
       <NuxtLink to="/home" mt-2 px-12 py-2 border-2 rounded-md flex items-center gap-2 hover:border-4>

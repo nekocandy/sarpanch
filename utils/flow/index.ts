@@ -25,7 +25,7 @@ const { NC_ADDRESS, NCT_ADDRESS, FT_ADDRESS, DFT_ADDRESS } = useRuntimeConfig().
 
 config({
   'app.detail.title': 'Sarpanch',
-  'app.detail.icon': '',
+  'app.detail.icon': 'https://pycz.dev/favicon.svg',
   'flow.network': network,
   'accessNode.api': fclConfigInfo[network].accessNode,
   'discovery.wallet': fclConfigInfo[network].discoveryWallet,
