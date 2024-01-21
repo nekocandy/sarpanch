@@ -7,9 +7,9 @@ const projectDescription = ref('')
 const projectImage = ref('')
 const imageUploading = ref(false)
 
-async function _createProject() {
+async function createProject() {
   if (!projectName.value || !projectDescription.value || !projectImage.value)
-    return
+    return consola.error('Please fill out all fields')
 
   const transaction = await fcl.mutate({
     cadence: CREATE_PROJECT,
@@ -26,6 +26,11 @@ async function _createProject() {
     proposer: fcl.authz,
     // @ts-expect-error not sure how to type this
     authorizations: [fcl.authz],
+  })
+
+  TransactionModals.value.push({
+    title: 'Txn for Creating Project for Community Fund',
+    transactionId: transaction,
   })
 
   await fcl.tx(transaction).onceSealed()
@@ -59,18 +64,18 @@ async function fileUploaded(event: Event) {
     </div>
 
     <div flex flex-col gap-4>
-      <div flex items-center justify-between>
-        <div flex items-center gap-4>
+      <div flex items-center justify-between gap-12>
+        <div flex items-center gap-4 w-full>
           <label for="projectName">Project Name</label>
-          <input id="projectName" v-model="projectName">
+          <input id="projectName" v-model="projectName" px-2 py-1 bg-zinc-800 focus:outline-none border-1 rounded-md w-full>
         </div>
 
-        <div flex items-center gap-4>
+        <div flex items-center gap-4 w-full>
           <label for="projectDescription">Project Description</label>
-          <input id="projectDescription" v-model="projectDescription">
+          <textarea id="projectDescription" v-model="projectDescription" px-2 py-1 bg-zinc-800 focus:outline-none border-1 rounded-md w-full />
         </div>
 
-        <div flex items-center gap-4>
+        <div flex items-center gap-4 w-full>
           <div
             :class="{
               'i-line-md-uploading-loop': imageUploading,
@@ -78,10 +83,10 @@ async function fileUploaded(event: Event) {
             }"
           />
           <label for="projectImage">Project Image</label>
-          <input id="projectImage" type="file" accept="image/png" @change="fileUploaded">
+          <input id="projectImage" px-2 py-1 bg-zinc-800 focus:outline-none border-1 rounded-md w-full type="file" accept="image/png" @change="fileUploaded">
         </div>
 
-        <button @click="_createProject()">
+        <button bg-lime px-12 w-fit py-2 rounded-md text-black border-2 @click="createProject()">
           Create Project
         </button>
       </div>
