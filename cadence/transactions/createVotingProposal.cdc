@@ -1,4 +1,4 @@
-import Vote from 0xNC
+import SarpanchVoting from 0xNC
 
 transaction(
     name: String,
@@ -7,10 +7,10 @@ transaction(
     endTime: UFix64
 ) {
 
-    let Admin: &Vote.Admin
+    let Admin: &SarpanchVoting.Admin
 
     prepare(signer: AuthAccount) {
-        self.Admin = signer.borrow<&Vote.Admin>(from: Vote.AdminPath) ?? panic("only admin transaction~")
+        self.Admin = signer.borrow<&SarpanchVoting.Admin>(from: SarpanchVoting.AdminPath) ?? panic("only admin transaction~")
     }
 
     execute {
