@@ -5,7 +5,7 @@ import type { Product } from '~/utils/types'
 const res = await useFetch('https://fakestoreapi.com/products')
 const products = ref<Product[]>(res.data.value as unknown as Product[])
 
-async function buyProduct(cost: number) {
+async function buyProduct(cost: number, title: string) {
   const transaction = await fcl.mutate({
     cadence: `
     import FungibleToken from 0xFT
@@ -39,6 +39,11 @@ async function buyProduct(cost: number) {
     proposer: fcl.authz,
     // @ts-expect-error not sure how to type this
     authorizations: [fcl.authz],
+  })
+
+  TransactionModals.value.push({
+    title: `Txn for buying ${title} from Decentralized Marketplace`,
+    transactionId: transaction,
   })
 
   await fcl.tx(transaction).onceSealed()
@@ -75,7 +80,7 @@ async function buyProduct(cost: number) {
           </div>
 
           <div>
-            <button text-center bg-green-600 w-full py-2 rounded-md @click="buyProduct(product.price)">
+            <button text-center bg-green-600 w-full py-2 rounded-md @click="buyProduct(product.price, product.title)">
               Buy
             </button>
           </div>
