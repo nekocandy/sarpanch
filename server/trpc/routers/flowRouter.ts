@@ -7,13 +7,7 @@ import { signFromServer } from '~/server/utils/sign'
 
 import flowJSON from '~/flow.json'
 
-/*
-  (env.PUBLIC_FLOW_NETWORK as
-  | 'mainnet'
-  | 'testnet'
-  | 'emulator') ||
- */
-export const network: 'mainnet' | 'testnet' | 'emulator' = 'emulator'
+export const network: 'mainnet' | 'testnet' | 'emulator' = 'testnet'
 
 const fclConfigInfo = {
   emulator: {
@@ -42,8 +36,7 @@ config({
   'accessNode.api': fclConfigInfo[network].accessNode,
   'discovery.wallet': fclConfigInfo[network].discoveryWallet,
   'discovery.authn.include': fclConfigInfo[network].discoveryAuthInclude,
-  // @ts-expect-error no idea
-  '0xNC': `0x${flowJSON.accounts.default.address}` || NC_ADDRESS,
+  '0xNC': NC_ADDRESS,
   '0xNCT': NCT_ADDRESS,
   '0xFT': FT_ADDRESS,
   '0xDFT': DFT_ADDRESS,

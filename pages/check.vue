@@ -4,7 +4,6 @@ import type { Transaction } from '@onflow/typedefs'
 import SetupSamuhikaTokenVault from '~/cadence/SamuhikaTokenUtils/setupVault.cdc?raw'
 import GetSamuhikaTokenBalance from '~/cadence/scripts/getSamuhikaTokenBalance.cdc?raw'
 import DepositToTreasury from '~/cadence/transactions/depositTokensToTreasury.cdc?raw'
-import { accounts } from '~/flow.json'
 import { TransactionModals } from '~/utils/store'
 
 const router = useRouter()
@@ -13,7 +12,7 @@ const { $client } = useNuxtApp()
 const balance = ref(0)
 const isChecking = ref(true)
 // const isAccountReady = ref<boolean | null>(null)
-// const { NC_ADDRESS } = useRuntimeConfig().public
+const { NC_ADDRESS } = useRuntimeConfig().public
 
 if (!userData.value?.addr)
   router.push('/')
@@ -40,7 +39,7 @@ async function pledgeTokens() {
     cadence: DepositToTreasury,
     // @ts-expect-error no typings for fcl
     args: (arg, t) => [
-      arg(`0x${accounts.default.address}`, t.Address),
+      arg(NC_ADDRESS, t.Address),
       arg('1000.00', t.UFix64),
       arg('Pledge to SarpanchDAO', t.String),
     ],

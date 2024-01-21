@@ -2,15 +2,17 @@
 import * as fcl from '@onflow/fcl'
 import { SHA3 } from 'sha3'
 import EC from 'elliptic'
-import flow from '~/flow.json'
+import { env } from 'std-env'
 
 import '~/utils/flow/index'
 
 // eslint-disable-next-line new-cap
 const ec = new EC.ec('p256')
 
-// @ts-expect-error default exists
-const CONTRACT_ADDRESS = flow.accounts.default as { address: string, key: string }
+const CONTRACT_ADDRESS = {
+  address: env.NC_ADDRESS as string,
+  key: env.FLOW_SARPANCH_DAO_KEY as string,
+}
 
 export function signMessage(message: string) {
   const key = ec.keyFromPrivate(Buffer.from(CONTRACT_ADDRESS.key, 'hex'))

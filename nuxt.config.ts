@@ -55,6 +55,7 @@ export default defineNuxtConfig({
       DISCORD_CLIENT_ID: env.DISCORD_CLIENT_ID as string,
       DISCORD_CLIENT_SECRET: env.DISCORD_CLIENT_SECRET as string,
     },
+    FLOW_SARPANCH_DAO_KEY: env.FLOW_SARPANCH_DAO_KEY as string,
     public: {
       NCT_ADDRESS: env.NUXT_PUBLIC_NCT_ADDRESS as string,
       NC_ADDRESS: env.NC_ADDRESS as string,

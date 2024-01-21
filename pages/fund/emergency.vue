@@ -4,6 +4,7 @@ import getTreasuryInfo from '~/utils/flow/treasury'
 import DepositToTreasury from '~/cadence/transactions/depositTokensToTreasury.cdc?raw'
 import flowData from '~/flow.json'
 
+const { NC_ADDRESS } = useRuntimeConfig().public
 const treasuryData = toRef(await getTreasuryInfo())
 
 async function onDonateClicked() {
@@ -17,7 +18,7 @@ async function onDonateClicked() {
     // @ts-expect-error no typings for fcl
     args: (arg, t) => [
       // TODO: get the address of the current user
-      arg(`0x${flowData.accounts.default.address}`, t.Address),
+      arg(NC_ADDRESS, t.Address),
       arg(Number.parseFloat(amount).toFixed(2), t.UFix64),
       arg('Donation to Emergency Fund!', t.String),
     ],
