@@ -37,7 +37,7 @@ const NAVIGATION = [
                   backgroundColor: item.color,
                 }"
               />
-              <div class="mt-2 text-xl font-bold">
+              <div class="mt-2 text-xl font-bold" text-center>
                 {{ item.name }}
               </div>
             </div>
