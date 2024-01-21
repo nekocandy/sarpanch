@@ -77,6 +77,9 @@ dependencies:
   std-env:
     specifier: ^3.7.0
     version: 3.7.0
+  tailwind-merge:
+    specifier: ^2.2.0
+    version: 2.2.0
   trpc-nuxt:
     specifier: ^0.10.17
     version: 0.10.17(@trpc/client@10.45.0)(@trpc/server@10.45.0)
@@ -11490,6 +11493,12 @@ packages:
       '@pkgr/core': 0.1.0
       tslib: 2.6.2
     dev: true
+
+  /tailwind-merge@2.2.0:
+    resolution: {integrity: sha512-SqqhhaL0T06SW59+JVNfAqKdqLs0497esifRrZ7jOaefP3o64fdFNDMrAQWZFMxTLJPiHVjRLUywT8uFz1xNWQ==}
+    dependencies:
+      '@babel/runtime': 7.23.6
+    dev: false
 
   /tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
