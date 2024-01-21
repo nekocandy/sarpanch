@@ -1,4 +1,4 @@
-import FlowToken from 0x0ae53cb6e3f42a79
+import FlowToken from 0x7e60df042a9c0868
 
 pub contract CommunityProjectCollection {
 

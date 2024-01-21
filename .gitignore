@@ -9,3 +9,4 @@ dist
 .vercel
 *.sqlite
 components.json
+sarpanch-dao.pkey

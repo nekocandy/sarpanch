@@ -14,26 +14,21 @@
     "testnet": "access.devnet.nodes.onflow.org:9000"
   },
   "accounts": {
-    "default": {
-      "address": "01cf0e2f2f715450",
-      "key": "2240b31af9db9a9bf2848785eb05105193bad1adf190d09ea169a73902246075"
-    },
-    "emulator-account": {
-      "address": "f8d6e0586b0a20c7",
-      "key": "2240b31af9db9a9bf2848785eb05105193bad1adf190d09ea169a73902246075"
+    "sarpanch-dao": {
+      "address": "224ad82f1116c3e7",
+      "key": "$FLOW_SARPANCH_DAO_KEY"
     }
   },
   "deployments": {
-    "emulator": {
-      "default": [
+    "testnet": {
+      "sarpanch-dao": [
         "CommunityProjectCollection",
         "SamuhikaToken",
         "SarpanchCommunityTreasury",
         "SarpanchNFT",
         "SarpanchScholarship",
         "SarpanchVoting"
-      ],
-      "emulator-account": []
+      ]
     }
   }
 }
