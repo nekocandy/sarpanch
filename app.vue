@@ -2,12 +2,9 @@
 import { Notifications, Notivue } from 'notivue'
 
 function checkIFrame() {
-  consola.info('checkIFrame')
   const iframe = document.getElementById('FCL_IFRAME')
-  if (iframe && iframe.style.zIndex !== '300') {
-    consola.info('iframe', iframe.style.zIndex)
+  if (iframe && iframe.style.zIndex !== '300')
     iframe.style.zIndex = '300'
-  }
 }
 
 onMounted(() => {

@@ -60,6 +60,7 @@ export default defineNuxtConfig({
       NC_ADDRESS: env.NC_ADDRESS as string,
       FT_ADDRESS: env.FT_ADDRESS as string,
       DFT_ADDRESS: env.DFT_ADDRESS as string,
+      STORAGE_TOKEN: env.STORAGE_TOKEN as string,
     },
   },
 })
