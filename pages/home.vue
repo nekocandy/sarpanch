@@ -7,6 +7,10 @@ const NAVIGATION = [
     path: '/fund/community',
   },
   {
+    name: 'Scholarship Fund',
+    path: '/fund/scholarship',
+  },
+  {
     name: 'Decentralized Local Community Marketplace',
     path: '/decentralized-community-marketplace',
   },
