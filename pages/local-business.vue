@@ -55,7 +55,7 @@ async function buyProduct(cost: number, title: string) {
   <div h-full w-full flex flex-col gap-4>
     <div flex items-center justify-between>
       <h1 text-xl font-black>
-        Buy & Support Local Businesses in your community
+        Decentralized Local Community Marketplace
       </h1>
     </div>
 
