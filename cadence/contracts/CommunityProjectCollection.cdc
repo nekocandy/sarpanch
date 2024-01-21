@@ -34,6 +34,7 @@ pub contract CommunityProjectCollection {
                 amount: amount,
                 transactionID: transactionID
             )
+            
             self.donations.append(donation)
         }
     }
@@ -61,7 +62,7 @@ pub contract CommunityProjectCollection {
 
     pub event ProjectCreated(name: String)
 
-    pub event DonationMade(projectIndex: Int, sender: Address, amount: UFix64, transactionID: String)
+    pub event DonationMade(projectIndex: Int, name: String,sender: Address, amount: UFix64, transactionID: String)
 
     pub fun createProject(
         name: String,
@@ -103,6 +104,7 @@ pub contract CommunityProjectCollection {
 
         emit DonationMade(
             projectIndex: projectIndex,
+            name: project.name,
             sender: sender,
             amount: amount,
             transactionID: transactionID
