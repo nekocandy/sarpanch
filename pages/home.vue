@@ -12,7 +12,7 @@ const NAVIGATION = [
   },
   {
     name: 'Decentralized Local Community Marketplace',
-    path: '/decentralized-community-marketplace',
+    path: '/decentralizedmarketplace',
   },
   {
     name: 'Emergency Fund',

@@ -6,11 +6,11 @@ export default defineNuxtConfig({
   ssr: false,
   app: {
     head: {
-      title: 'opinionated nuxt',
+      title: 'Sarpanch',
       meta: [
         {
           name: 'description',
-          content: 'an opinionated nuxt starter template',
+          content: 'SarpanchDAO - A DAO for the people, by the people.',
         },
       ],
       link: [

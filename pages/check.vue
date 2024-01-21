@@ -67,8 +67,6 @@ async function setupAccount() {
   if (!userData.value?.addr)
     return router.push('/')
 
-  await pledgeTokens()
-
   const transaction = await fcl.mutate({
     cadence: SetupSamuhikaTokenVault,
     args: () => [],
@@ -95,6 +93,8 @@ async function setupAccount() {
 async function mintToken() {
   if (!userData.value?.addr)
     return router.push('/')
+
+  await pledgeTokens()
 
   const transaction = await $client.flowRouter.mint.mutate({ address: userData.value.addr })
 
