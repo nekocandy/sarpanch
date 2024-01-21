@@ -61,6 +61,27 @@ async function Propose() {
         </button>
       </div>
     </div>
+
+    <div flex flex-col gap-8>
+      <h1 text-2xl font-bold>
+        Proposals
+      </h1>
+
+      <div grid grid-cols-3>
+        <div border-2 border-zinc-700 px-8 py-4 rounded-md flex flex-col gap-6>
+          <div flex items-center gap-4>
+            <div i-bx-upvote h-8 w-8 />
+            <h2 text-center text-xl font-bold>
+              Add more swings in the children playground area!
+            </h2>
+          </div>
+          <div text-end>
+            <div>Start Time: {{ dayjs().format('DD/MM/YYYY') }}</div>
+            <div>End Time: {{ dayjs().add(1, 'week').format('DD/MM/YYYY') }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

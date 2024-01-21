@@ -7,16 +7,16 @@ const NAVIGATION = [
     path: '/fund/community',
   },
   {
-    name: 'DAO - Inclusive Decision Making',
-    path: '/dao',
-  },
-  {
     name: 'Decentralized Local Community Marketplace',
     path: '/decentralized-community-marketplace',
   },
   {
     name: 'Emergency Fund',
     path: '/fund/emergency',
+  },
+  {
+    name: 'DAO - Inclusive Decision Making',
+    path: '/dao',
   },
 ].map(index => ({
   ...index,
