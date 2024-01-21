@@ -6,16 +6,19 @@ pub contract CommunityProjectCollection {
         pub let name: String
         pub let description: String
         pub let image: String
+        pub let address: Address
         pub var donations: [Donation]
 
         init(
             name: String,
             description: String,
             image: String,
+            address: Address
         ) {
             self.name = name
             self.description = description
             self.image = image
+            self.address = address
             self.donations = []
         }
 
@@ -53,11 +56,13 @@ pub contract CommunityProjectCollection {
         name: String,
         description: String,
         image: String,
+        address: Address
     ) {
         let newProject = Project(
             name: name,
             description: description,
             image: image,
+            address: address
         )
 
         self.projects.append(newProject)

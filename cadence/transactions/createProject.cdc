@@ -1,6 +1,6 @@
 import CommunityProjectCollection from 0xNC
 
-transaction(name: String, description: String, image: String) {
+transaction(name: String, description: String, image: String, address: Address) {
 
     prepare(signer: AuthAccount) {
     }
@@ -10,6 +10,7 @@ transaction(name: String, description: String, image: String) {
             name: name,
             description: description,
             image: image,
+            address: address
         )
     }
 }
