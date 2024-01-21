@@ -22,7 +22,18 @@ pub contract CommunityProjectCollection {
             self.donations = []
         }
 
-        pub fun addDonation(donation: Donation) {
+        pub fun addDonation( 
+            sender: Address,
+            sentTime: UFix64,
+            amount: UFix64,
+            transactionID: String
+        ) {
+            let donation = Donation(
+                sender: sender,
+                sentTime: sentTime,
+                amount: amount,
+                transactionID: transactionID
+            )
             self.donations.append(donation)
         }
     }
@@ -31,13 +42,13 @@ pub contract CommunityProjectCollection {
         pub let sender: Address
         pub let sentTime: UFix64
         pub let amount: UFix64
-        pub let transactionID: UInt64
+        pub let transactionID: String
 
         init(
             sender: Address,
             sentTime: UFix64,
             amount: UFix64,
-            transactionID: UInt64
+            transactionID: String
         ) {
             self.sender = sender
             self.sentTime = sentTime
@@ -50,7 +61,7 @@ pub contract CommunityProjectCollection {
 
     pub event ProjectCreated(name: String)
 
-    pub event DonationMade(projectIndex: Int, sender: Address, amount: UFix64, transactionID: UInt64)
+    pub event DonationMade(projectIndex: Int, sender: Address, amount: UFix64, transactionID: String)
 
     pub fun createProject(
         name: String,
@@ -72,7 +83,7 @@ pub contract CommunityProjectCollection {
     pub fun donateToProject(
         projectIndex: Int,
         amount: UFix64,
-        transactionID: UInt64
+        transactionID: String
     ) {
         pre {
             projectIndex >= 0 && projectIndex < self.projects.length: "Invalid project index"
@@ -83,12 +94,12 @@ pub contract CommunityProjectCollection {
         let sentTime = getCurrentBlock().timestamp
 
         // Add donation to the project's donations array
-        project.addDonation(donation: Donation(
+        project.addDonation(
             sender: sender,
             sentTime: sentTime,
             amount: amount,
             transactionID: transactionID
-        ))
+        )
 
         emit DonationMade(
             projectIndex: projectIndex,

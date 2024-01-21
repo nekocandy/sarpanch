@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import * as fcl from '@onflow/fcl'
+import { sendFlow } from '~/utils/flow/utils'
 import CREATE_PROJECT from '/cadence/transactions/createProject.cdc?raw'
 import GET_PROJECTS from '/cadence/scripts/getCommunityProjects.cdc?raw'
+import DONATE_TO_PROJECT from '/cadence/transactions/donateToProject.cdc?raw'
 
 const projects = ref<{
   name: string
+  address: string
   description: string
   image: string
 }[]>([])
@@ -78,8 +81,48 @@ function generateIPFSImageURL(cid: string) {
   return `https://${cid}.ipfs.dweb.link/`
 }
 
-async function fundProject() {
+async function fundProject(projectAddress: string, projectName: string, index: number) {
+  // eslint-disable-next-line no-alert
+  const amount = prompt(`How much would you like to fund ${projectName}?`)
+  if (!amount)
+    return
 
+  const fundingTransactionId = await sendFlow(projectAddress, amount)
+
+  TransactionModals.value.push({
+    title: `Txn for Funding ${projectName}`,
+    transactionId: fundingTransactionId,
+  })
+
+  await fcl.tx(fundingTransactionId).onceSealed()
+  consola.info('Funding complete')
+
+  const donationStorageTxnId = await fcl.mutate({
+    cadence: DONATE_TO_PROJECT,
+    limit: 9999,
+    // @ts-expect-error not sure how to type this
+    args: (arg, t) => [
+      arg(index, t.Int),
+      arg(Number.parseFloat(amount).toFixed(2), t.UFix64),
+      arg(fundingTransactionId, t.String),
+    ],
+    // @ts-expect-error not sure how to type this
+    payer: fcl.authz,
+    // @ts-expect-error not sure how to type this
+    proposer: fcl.authz,
+    // @ts-expect-error not sure how to type this
+    authorizations: [fcl.authz],
+  })
+
+  TransactionModals.value.push({
+    title: `Txn for Storing Donation for ${projectName}`,
+    transactionId: donationStorageTxnId,
+  })
+
+  await fcl.tx(donationStorageTxnId).onceSealed()
+  consola.info('Donation stored')
+
+  await getProjects()
 }
 
 onMounted(async () => {
@@ -131,7 +174,7 @@ onMounted(async () => {
 
     <div flex-1 flex>
       <div grid grid-cols-4 gap-8 w-full>
-        <div v-for="project in projects" :key="project.image" h-fit w-full rounded-md px-4 py-4 flex flex-col items-center justify-between border-2 gap-4>
+        <div v-for="(project, index) in projects" :key="project.image" h-fit w-full rounded-md px-4 py-4 flex flex-col items-center justify-between border-2 gap-4>
           <img mx-auto h-40 :src="generateIPFSImageURL(project.image)" alt="project_image_from_ipfs">
 
           <div>
@@ -145,7 +188,7 @@ onMounted(async () => {
           </div>
 
           <div flex items-center>
-            <button bg-lime px-12 w-fit py-2 rounded-md text-black border-2 @click="fundProject">
+            <button bg-lime px-12 w-fit py-2 rounded-md text-black border-2 @click="fundProject(project.address, project.name, index)">
               Fund
             </button>
           </div>
