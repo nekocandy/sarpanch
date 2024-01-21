@@ -29,8 +29,8 @@ const NAVIGATION = [
     </div>
     <div flex-1 h-full w-full>
       <div grid grid-cols-4 gap-8>
-        <div v-for="item in NAVIGATION" :key="item.path" flex flex-col items-center justify-center border-2 py-4 px-4 rounded-md>
-          <NuxtLink :to="item.path">
+        <div v-for="item in NAVIGATION" :key="item.path">
+          <NuxtLink :to="item.path" flex flex-col items-center justify-center border-2 py-4 px-4 rounded-md h-full>
             <div flex flex-col items-center justify-center gap-4>
               <div
                 class="w-24 h-24 rounded-full" :style="{
