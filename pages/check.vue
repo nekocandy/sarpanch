@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import * as fcl from '@onflow/fcl'
+import type { Transaction } from '@onflow/typedefs'
 import SetupSamuhikaTokenVault from '~/cadence/SamuhikaTokenUtils/setupVault.cdc?raw'
 import GetSamuhikaTokenBalance from '~/cadence/scripts/getSamuhikaTokenBalance.cdc?raw'
 import DepositToTreasury from '~/cadence/transactions/depositTokensToTreasury.cdc?raw'
 import { accounts } from '~/flow.json'
+import { TransactionModals } from '~/utils/store'
 
 const router = useRouter()
 const { $client } = useNuxtApp()
@@ -52,6 +54,11 @@ async function pledgeTokens() {
 
   })
 
+  TransactionModals.value.push({
+    title: 'Txn for Pledging $FLOW to SarpanchDAO',
+    transactionId: transaction,
+  })
+
   consola.info('transaction', transaction)
   await fcl.tx(transaction).onceSealed()
 }
@@ -62,7 +69,7 @@ async function setupAccount() {
 
   await pledgeTokens()
 
-  await fcl.mutate({
+  const transaction = await fcl.mutate({
     cadence: SetupSamuhikaTokenVault,
     args: () => [],
     // @ts-expect-error no typings for fcl
@@ -74,6 +81,13 @@ async function setupAccount() {
     limit: 999,
   })
 
+  TransactionModals.value.push({
+    title: 'Txn for Setting up SamuhikaToken Vault',
+    transactionId: transaction,
+  })
+
+  await fcl.tx(transaction).onceSealed()
+
   isChecking.value = true
   await getBalance()
 }
@@ -83,6 +97,11 @@ async function mintToken() {
     return router.push('/')
 
   const transaction = await $client.flowRouter.mint.mutate({ address: userData.value.addr })
+
+  TransactionModals.value.push({
+    title: 'Txn for Minting SamuhikaToken',
+    transactionId: transaction,
+  })
 
   consola.info('transaction', transaction)
   await fcl.tx(transaction).onceSealed()

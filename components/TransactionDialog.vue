@@ -29,6 +29,7 @@ const transactionStatusText = computed(() => {
 })
 
 onMounted(async () => {
+  consola.info('TransactionDialog', props.transactionId)
   fcl.tx(props.transactionId).subscribe((transaction) => {
     transactionStatus.value = transaction.status
   })
