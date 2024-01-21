@@ -4,6 +4,7 @@
     "SamuhikaToken": "cadence/contracts/SamuhikaToken.cdc",
     "SarpanchCommunityTreasury": "cadence/contracts/SarpanchCommunityTreasury.cdc",
     "SarpanchNFT": "cadence/contracts/SarpanchNFT.cdc",
+    "SarpanchScholarship": "cadence/contracts/SarpanchScholarship.cdc",
     "SarpanchVoting": "cadence/contracts/SarpanchVoting.cdc"
   },
   "networks": {
@@ -14,7 +15,7 @@
   },
   "accounts": {
     "default": {
-      "address": "f3fcd2c1a78f5eee",
+      "address": "120e725050340cab",
       "key": "2240b31af9db9a9bf2848785eb05105193bad1adf190d09ea169a73902246075"
     },
     "emulator-account": {
@@ -29,6 +30,7 @@
         "SamuhikaToken",
         "SarpanchCommunityTreasury",
         "SarpanchNFT",
+        "SarpanchScholarship",
         "SarpanchVoting"
       ],
       "emulator-account": []
