@@ -24,10 +24,10 @@
   "deployments": {
     "emulator": {
       "default": [
+        "CommunityProjectCollection",
         "SamuhikaToken",
         "SarpanchCommunityTreasury",
-        "SarpanchNFT",
-        "CommunityProjectCollection"
+        "SarpanchNFT"
       ],
       "emulator-account": []
     }
