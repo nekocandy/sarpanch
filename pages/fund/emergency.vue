@@ -4,7 +4,7 @@ import getTreasuryInfo from '~/utils/flow/treasury'
 import DepositToTreasury from '~/cadence/transactions/depositTokensToTreasury.cdc?raw'
 import flowData from '~/flow.json'
 
-const treasuryData = await getTreasuryInfo()
+const treasuryData = toRef(await getTreasuryInfo())
 
 async function onDonateClicked() {
   // eslint-disable-next-line no-alert
@@ -30,8 +30,16 @@ async function onDonateClicked() {
     limit: 999,
   })
 
+  TransactionModals.value.push({
+    title: `Txn for donating to Emergency Fund`,
+    transactionId: transaction,
+  })
+
   consola.info('transaction', transaction)
   await fcl.tx(transaction).onceSealed()
+
+  const newTreasuryData = await getTreasuryInfo()
+  treasuryData.value = newTreasuryData
 }
 </script>
 

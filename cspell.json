@@ -10,6 +10,7 @@
     "commitlint",
     "consola",
     "devnet",
+    "flowser",
     "formkit",
     "kysely",
     "notivue",

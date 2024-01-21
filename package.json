@@ -9,7 +9,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare && husky install",
-    "flow:dev": "concurrently \"flow emulator start --verbose\" \"flow dev-wallet\""
+    "flow:dev": "concurrently \"flow emulator start --verbose\" \"flow dev-wallet\" \"flow flowser\""
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.1",
